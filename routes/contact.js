@@ -13,4 +13,14 @@ router.post("/post", async (req, res) => {
     }
 });
 
+router.get("/get", async (req, res) => {
+    try {
+        const contacts = await contact.find();
+        res.status(200).json(contacts);
+    } catch (error) {
+        res.status(400).json({ message: "Technical error occurred", error: error.message });
+    }
+});
+
 module.exports = router;
+
